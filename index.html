@@ -28,8 +28,27 @@
           { name: "Pasta", price: 0.7 },
         ];
 
+        const updateQuantity = (name, quantity) => {
+          setAddedProducts((curr) =>
+            curr.map((p) => {
+              if (p.name === name) {
+                return {
+                  ...p,
+                  quantity: quantity,
+                };
+              } else {
+                return p;
+              }
+            })
+          );
+        };
+
         const addToCart = (product) => {
-          if (addedProducts.some((p) => p.name === product.name)) {
+          const addedProduct = addedProducts.find(
+            (p) => p.name === product.name
+          );
+          if (addedProduct) {
+            updateQuantity(addedProduct.name, addedProduct.quantity + 1);
             return;
           } else {
             product = { ...product, quantity: 1 };
