@@ -29,6 +29,9 @@
         ];
 
         const updateQuantity = (name, quantity) => {
+          if (quantity < 1 || NaN) {
+            return;
+          }
           setAddedProducts((curr) =>
             curr.map((p) => {
               if (p.name === name) {
@@ -99,7 +102,13 @@
                       <div className="product">
                         <p>{p.name}</p>
                         <p>Prezzo: {p.price}€/Kg</p>
-                        <p>Quantità: {p.quantity}</p>
+                        <input
+                          type="number"
+                          value={p.quantity}
+                          onChange={(e) =>
+                            updateQuantity(p.name, parseInt(e.target.value))
+                          }
+                        ></input>
                       </div>
                       <div>
                         <button onClick={() => removeFromCart(p)}>
