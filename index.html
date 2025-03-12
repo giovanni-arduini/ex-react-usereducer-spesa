@@ -24,11 +24,15 @@
 
         function List() {
           return (
-            <ul>
+            <ul class="product-list">
               {products.map((p, i) => (
                 <li key={i}>
-                  <p>{p.name}</p>
-                  <p>{p.price}</p>
+                  <p>
+                    <div class="product">
+                      <p>{p.name}</p>
+                      <p>Prezzo: {p.price}</p>
+                    </div>
+                  </p>
                 </li>
               ))}
             </ul>
