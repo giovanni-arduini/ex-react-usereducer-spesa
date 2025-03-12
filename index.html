@@ -39,19 +39,43 @@
 
         function List() {
           return (
-            <ul className="products-list">
-              {products.map((p, i) => (
-                <li key={i}>
-                  <div className="product">
-                    <p>{p.name}</p>
-                    <p>Prezzo: {p.price}€/Kg</p>
-                  </div>
-                  <button onClick={() => addToCart(p)}>
-                    Aggiungi al carrello
-                  </button>
-                </li>
-              ))}
-            </ul>
+            <>
+              <h1>Lista prodotti</h1>
+              <ul className="products-list">
+                {products.map((p, i) => (
+                  <li key={i}>
+                    <div className="product">
+                      <p>{p.name}</p>
+                      <p>Prezzo: {p.price}€/Kg</p>
+                    </div>
+                    <button onClick={() => addToCart(p)}>
+                      Aggiungi al carrello
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </>
+          );
+        }
+
+        function CartList() {
+          return (
+            <>
+              <h2>Carrello</h2>
+              <ul>
+                {addedProducts.map((p, i) => {
+                  return (
+                    <li key={i}>
+                      <div className="product">
+                        <p>{p.name}</p>
+                        <p>Prezzo: {p.price}€/Kg</p>
+                        <p>Quantità: {p.quantity}</p>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            </>
           );
         }
 
@@ -59,6 +83,9 @@
           <>
             <section className="container">
               <List />
+            </section>
+            <section>
+              <CartList />
             </section>
           </>
         );
