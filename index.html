@@ -22,20 +22,25 @@
           { name: "Pasta", price: 0.7 },
         ];
 
+        function List() {
+          return (
+            <ul>
+              {products.map((p, i) => (
+                <li key={i}>
+                  <p>{p.name}</p>
+                  <p>{p.price}</p>
+                </li>
+              ))}
+            </ul>
+          );
+        }
+
         return (
           <>
             <section>
               <List />
             </section>
           </>
-        );
-      }
-
-      function List() {
-        return (
-          <ul>
-            <li>Ciao!</li>
-          </ul>
         );
       }
     </script>
