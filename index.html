@@ -56,6 +56,12 @@
           }
         };
 
+        const removeFromCart = (product) => {
+          setAddedProducts((curr) =>
+            curr.filter((p) => p.name !== product.name)
+          );
+        };
+
         function List() {
           return (
             <>
@@ -89,6 +95,11 @@
                         <p>{p.name}</p>
                         <p>Prezzo: {p.price}€/Kg</p>
                         <p>Quantità: {p.quantity}</p>
+                      </div>
+                      <div>
+                        <button onClick={() => removeFromCart(p)}>
+                          Rimuovi dal Carrello
+                        </button>
                       </div>
                     </li>
                   );
